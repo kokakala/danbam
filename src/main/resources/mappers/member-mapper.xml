@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="memberMapper">
+  
+  <resultMap id="memberResultSet" type="Member">
+		<id property="mno" column="m_no"></id>
+		<result property="loginType" column="logintype"/>
+		<result property="email" column="email"/>
+		<result property="mid" column="mid"/>
+		<result property="snsid" column="snsid"/>		
+		<result property="pass" column="pass"/>
+		<result property="nickName" column="nickname"/>
+		<result property="mobile" column="mobile"/>
+		<result property="location" column="location"/>
+		<result property="enrollDate" column="enroll_date"/>
+		<result property="updateDate" column="update_date"/>
+		<result property="deleteDate" column="delete_date"/>
+		<result property="isDelete" column="isdelete"/>
+	</resultMap>
+  
+  <select id="loginMember" resultMap="memberResultSet">
+	select *
+	from member
+	where mid=#{mid} and pass=#{pass} and isdelete='N'
+  </select>
+  
+  
+  <insert id="insertMember">
+	insert into member values(seq_member.nextval,default,
+	#{email},#{mid},#{pass},#{nickName},#{mobile},#{location},default,null,null,default)
+  </insert>
+  
+  <select id="joinCheckNickName" resultType="_int">
+  	select count(*)
+	from member
+	where nickname=#{nickName}
+  </select>
+  
+  <select id="joinCheckEmail" resultType="_int">
+  	select count(*)
+  	from member
+  	where email=#{email}
+  </select>
+  
+  <select id="getMember" resultMap="memberResultSet">
+  	select * 
+	from member
+	where mid=#{mid};
+  </select>
+  	
+  <select id="joinCheckId" resultType="_int">
+  	select count(*)
+  	from member
+  	where mid=#{mid}
+  </select>
+  
+  <select id="selectgoogle" resultType="_int">
+  	select count(*)
+  	from member
+  	where snsid=#{mid}
+  </select>
+  
+  <!-- <insert id="insertgoogle">
+  	
+  </insert> -->
+  
+  
+  
+</mapper>
