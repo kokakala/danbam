@@ -7,12 +7,14 @@
 	
 	<typeAliases>
 	
-		<typeAlias type="com.hongcha.main.model.vo.Member" alias="Member"/>
+		<typeAlias type="com.hongcha.main.member.model.vo.Member" alias="Member"/>
+		<typeAlias type="com.hongcha.main.board.model.vo.Board" alias="Board"/>
 		
 
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="mappers/member-mapper.xml"/>
+		<mapper resource="mappers/board-mapper.xml"/>
 	</mappers>
 </configuration>

@@ -64,6 +64,10 @@
   	
   </insert> -->
   
-  
+  <update id="exit">
+  	update member
+  	set isDelete='Y'
+  	where mid=#{mid}
+  </update>
   
 </mapper>
